@@ -17,7 +17,7 @@ public record AiService(AiClient aiClient, ImageGeneratorClient imageGeneratorCl
 
   @SneakyThrows
   public InputStreamResource constructImg(@NotNull final ImageRequest imageRequest) {
-    String imageUrl = imageGeneratorClient.generateImage(imageRequest).getData().get(0).getUrl();
+    String imageUrl = imageGeneratorClient.generateImage(imageRequest).getData().getFirst().getUrl();
 
     return new InputStreamResource(
         new ByteArrayInputStream(webClient.get()
